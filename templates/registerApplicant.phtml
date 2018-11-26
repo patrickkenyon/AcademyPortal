@@ -11,7 +11,7 @@
 <!--    <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>-->
 <!--    <link rel="stylesheet" href="css/admin.css">-->
 
-    <title>AcademyPortal | Register User</title>
+    <title>AcademyPortal | Register Applicant</title>
 </head>
 <body>
 <div>
@@ -22,17 +22,21 @@
 <form id="registerApplicantForm">
     <div>
         <h4>Name</h4>
-        <input type="text" readonly value="">
+        <input type="text">
     </div>
     <div>
         <h4>Email</h4>
         <input id="emailNewApplicant" type="email" name="email">
-        <input type="submit" id="newUserSubmit">
     </div>
     <div>
         <h4>COHORT APPLYING FOR</h4>
-        <input id="cohort" type="email" name="email">
-        <input type="submit" id="newUserSubmit">
+        <select name="cohort" id="cohort">
+            <option value="feb2019">11 February 2019</option>
+            <option value="aug2019">27 August 2019</option>
+            <option value="feb2020">10 February 2020</option>
+            <option value="aug2020">25 August 2020</option>
+        </select>
+        <input type="submit" id="newApplicantSubmit">
     </div>
 </form>
 </body>
