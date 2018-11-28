@@ -9,21 +9,33 @@ use Slim\Views\PhpRenderer;
 class SearchController
 {
     private $applicantModel;
-    private $renderer;
 
-    public function __construct(ApplicantModel $applicantModel, PhpRenderer $renderer)
+    public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
-        $this->renderer = $renderer;
     }
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $searchResults = $request->getParsedBody();
+        $data = ['success' => false, 'msg' => '', 'data' => []];
+        $statusCode = 401;
+
+        $searchTerm = $request->getParsedBody();
+
+        //Needs to be checked once s3 merged, format of parsed body could be very different
         $validatedSearchData = [
-            'name' => filter_var($searchResults['name'], FILTER_SANITIZE_STRING)
+            'name' => filter_var($searchTerm['name'], FILTER_SANITIZE_STRING)
         ];
-        $this->applicantModel->searchDatabaseByName($validatedSearchData);
-        return $this->renderer->render($response, 'searchResults.phtml', $args);
+
+        $searchResults = $this->applicantModel->searchDatabaseByName($validatedSearchData);
+
+        //Needs checking too, format of json could be different
+        if ($searchResults) {
+            $data['success'] = $searchResults;
+            $data['msg'] = '';
+            $statusCode = 200;
+        }
+
+        return $response->withJson($data, $statusCode);
     }
 }
