@@ -12,3 +12,9 @@ let jsonRequest = async (path, data) => {
         .then(data => data.json())
     return response
 }
+
+let searchButton = document.getElementById('searchButton')
+searchButton.addEventListener('click', async (e) => {
+    e.preventDefault()
+
+})
