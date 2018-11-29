@@ -7,11 +7,7 @@ use Slim\Http\Response;
 $app->get('/','HomePageController');
 $app->get('/admin', 'AdminController');
 $app->get('/register', 'RegisterController');
-$app->get('/addEvent', function (Request $request, Response $response, array $args) {
-
-    // Render index view
-    return $this->renderer->render($response, 'addEvent.phtml', $args);
-});
+$app->get('/addEvent', 'AddEventPageController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
