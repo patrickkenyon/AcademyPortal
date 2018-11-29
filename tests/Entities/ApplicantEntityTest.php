@@ -1,16 +1,40 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 28/11/2018
- * Time: 11:01
- */
 
 namespace Tests\Entities;
 
-use Portal\Entities\ApplicantEntity;
+use PHPUnit\Framework\TestCase;
+use Portal\Entities as Entities;
 
-class ApplicantEntityTest extends \PHPUnit_Framework_TestCase
+class ApplicantEntityTest extends TestCase
 {
+    function testValidateEmailSuccess()
+    {
+        $applicantName = "Matt";
+        $applicantEmail = "test@test.com";
+        $applicantPhoneNumber = "07999909999";
+        $applicantCohortId = 2;
+        $applicantWhyDev = "a";
+        $applicantCodeExperience = "20 years";
+        $applicantHearAboutId = 4;
+        $applicantEligible = "yes";
+        $applicantEighteenPlus = "yes";
+        $applicantFinance = "yes";
+        $applicantNotes = "yes";
 
+        $case = new Entities\ApplicantEntity(
+            $applicantName,
+            $applicantEmail,
+            $applicantPhoneNumber,
+            $applicantCohortId,
+            $applicantWhyDev,
+            $applicantCodeExperience,
+            $applicantHearAboutId,
+            $applicantEligible,
+            $applicantEighteenPlus,
+            $applicantFinance,
+            $applicantNotes
+        );
+        $expected = Entities\ApplicantEntity::class;
+        $this->assertInstanceOf($expected, $case);
+    }
 }
