@@ -12,8 +12,8 @@ class LoginController
 
     /**
      * Instantiates login controller
-     *
      * LoginController constructor.
+     *
      * @param UserModel $userModel userModel object dependency
      */
     public function __construct(UserModel $userModel)
@@ -29,7 +29,7 @@ class LoginController
      *
      * @return string JSON message and status code
      */
-    public function __invoke(Request $request, Response $response):Response
+    public function __invoke(Request $request, Response $response) : Response
     {
         $data = ['success' => false, 'msg' => 'Incorrect email or password.', 'data' => []];
         $statusCode = 401;
@@ -37,7 +37,7 @@ class LoginController
 
         $parsedBody = $request->getParsedBody();
         $user = $this->userModel->getUserByEmail($parsedBody['userEmail']);
-        $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], $parsedBody['password'], $user);
+        $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], urldecode($parsedBody['password']), $user);
 
         if($result) {
             $data['success'] = $result;

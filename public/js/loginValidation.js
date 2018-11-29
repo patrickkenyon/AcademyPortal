@@ -44,8 +44,13 @@ loginForm.addEventListener('submit', async (e) => {
 
     if (response && response['success'] === true){
         window.location.href = "/admin"
+<<<<<<< .merge_file_FeJ4hK
     } else {
         document.getElementById("error-message").innerText = response['msg'] || ''
     }
 
 })
+=======
+        : document.getElementById("error-message").innerText = response['msg']
+})
+>>>>>>> .merge_file_UYUyaE
