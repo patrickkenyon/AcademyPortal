@@ -15,6 +15,7 @@
     margin-bottom: 20px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     height: 30px;
 }
@@ -69,4 +70,18 @@
 
 .notes {
     height: 100%;
+}
+
+.message {
+    flex: 1 1 100%;
+    text-align: center;
+    font-style: italic;
+}
+
+.errorMessage {
+    color: #fa0101c7;
+}
+
+.successMessage {
+    color: #56e789;
 }
