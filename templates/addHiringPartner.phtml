@@ -23,8 +23,10 @@
         <div class="formField">
             <label for="companySize" class="hiringPartnerLabels">Size</label>
             <select id="companySize" class="addHiringPartner field" name="companySize" data-required="true" required>
-                <option value="1"> //populate dropdown with db info with ViewHelper
-                <option value="2"> //populate dropdown with db info with ViewHelper
+                <option value="" selected disabled>Select size bracket</option>
+                <?php
+                echo \Portal\ViewHelpers\AddHiringPartnerPageViewHelper::outputSizeBrackets($dropdownData);
+                ?>
             </select>
         </div>
         <div class="formField">

@@ -6,14 +6,7 @@ use \Slim\Http\Response as Response;
 $app->get('/','HomePageController');
 $app->get('/admin', 'AdminController');
 $app->get('/register', 'RegisterController');
-$app->get('/addHiringPartner', function ($request, $response, $args) {
-    if ($_SESSION['loggedIn']) {
-        return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
-    } else {
-        return $response->withStatus(401);
-    }
-});
-
+$app->get('/addHiringPartner', 'AddHiringPartnerPageController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
