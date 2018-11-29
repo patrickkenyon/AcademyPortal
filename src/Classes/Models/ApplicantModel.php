@@ -107,11 +107,13 @@ class ApplicantModel
             $applicantNotes
         );
     }
-}
 
     public function searchDatabaseByName(string $name)
     {
-    $query = $this->db->prepare("SELECT `name` FROM `applicants` WHERE `name` LIKE '%:name%';");
-       $query->bindParam(':name', $name);
-       return $query->execute();
+        $query = $this->db->prepare("SELECT `name` FROM `applicants` WHERE `name` LIKE '%:name%';");
+//        $query->setFetchMode(\PDO::FETCH_CLASS, '')
+        $query->bindParam(':name', $name);
+        $query->execute();
+        return $results = $query->fetchAll();
     }
+}
